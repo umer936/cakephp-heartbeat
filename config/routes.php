@@ -1,18 +1,15 @@
 <?php
-use Cake\Routing\RouteBuilder;
-use Cake\Routing\Router;
+
 use Cake\Routing\Route\DashedRoute;
 
-Router::plugin(
+$routes->plugin(
     'OrcaServices/Heartbeat',
     ['path' => '/heartbeat'],
-    function (RouteBuilder $routes) {
-        $routes->fallbacks(DashedRoute::class);
+    function ($routes) {
+        $routes->setRouteClass(DashedRoute::class);
+
+        $routes->get('/', ['controller' => 'Heartbeat', 'action' => 'index']);
     }
 );
-Router::extensions(['json']);
-Router::connect('/heartbeat', [
-    'plugin' => 'OrcaServices/Heartbeat',
-    'controller' => 'Heartbeat',
-    'action' => 'index',
-]);
+
+$routes->setExtensions(['json']);

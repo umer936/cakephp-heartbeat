@@ -22,7 +22,7 @@ class DBConnection extends Sensor
         try {
             $connection = ConnectionManager::get('default');
 
-            return $connection->connect();
+            return $connection->getDriver()->connect();
         } catch (\Exception $e) {
             return false;
         }

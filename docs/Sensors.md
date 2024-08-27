@@ -2,15 +2,18 @@ Built-in Sensors
 ================
 
 #### DB Connection
+
 Checks whether a connection to the database server can be established.
 
 #### DB Up to date
+
 Uses the Migrations Plugin to check whether all migrations have been run.
 
 If you use a version of cakephp/migrations below 2.2, you will need to load
 the cakephp/migrations plugin before the sensor is called.
 
 #### Debug Mode
+
 Outputs the configuration for the debug mode.
 
 
@@ -33,6 +36,7 @@ We assume that, to check the API status, we have an ``ApiClient`` class somewher
 and that class has a method called ``ping()`` which returns 'Pong' as answer from the API.
 
 In this example, the Sensor would look like this:
+
 ```` php
 <?php
 namespace Heartbeat\Sensor;
@@ -58,33 +62,36 @@ class MyApi extends Sensor
 ````
 
 Now we just have to load our new sensor in the [configuration](Configuration.md), e.g:
+
 ```php
-$config['App']['Heartbeat'] = [
-    'name' => 'My App',
-    'layout' => 'heartbeat',
-    'Sensors' => [
-        'Debug-Mode' => [
-            'enabled' => true,
-            'severity' => 1,
-            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DebugMode::class,
-        ],
-        'DB Connection' => [
-            'enabled' => true,
-            'severity' => 3,
-            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,
-            'cached' => true,
-        ],
-        'DB up to date' => [
-            'enabled' => false,
-            'severity' => 3,
-            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate::class,
-            'cached' => '+10 minutes',
-        ],
-        'REST API' => [
-            'enabled' => true,
-            'severity' => 2,
-            'class' => Heartbeat\Sensor\MyApi::class,
-            'cached' => '+15 minutes',
+'App' => [
+    'Heartbeat' => [
+        'name' => 'My App',
+        'layout' => 'heartbeat',
+        'Sensors' => [
+            'Debug-Mode' => [
+                'enabled' => true,
+                'severity' => 1,
+                'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DebugMode::class,
+            ],
+            'DB Connection' => [
+                'enabled' => true,
+                'severity' => 3,
+                'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,
+                'cached' => true,
+            ],
+            'DB up to date' => [
+                'enabled' => false,
+                'severity' => 3,
+                'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate::class,
+                'cached' => '+10 minutes',
+            ],
+            'REST API' => [
+                'enabled' => true,
+                'severity' => 2,
+                'class' => Heartbeat\Sensor\MyApi::class,
+                'cached' => '+15 minutes',
+            ],
         ],
     ],
 ];

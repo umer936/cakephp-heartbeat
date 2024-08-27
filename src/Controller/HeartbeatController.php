@@ -4,6 +4,7 @@ namespace OrcaServices\Heartbeat\Controller;
 
 use Cake\Core\Configure;
 use Cake\Event\Event;
+use Cake\Event\EventInterface;
 use OrcaServices\Heartbeat\Heartbeat\Heartbeat;
 
 /**
@@ -14,10 +15,10 @@ class HeartbeatController extends AppController
     /**
      * Before render callback.
      *
-     * @param \Cake\Event\Event $event The beforeRender event.
+     * @param \Cake\Event\EventInterface $event The beforeRender event.
      * @return \Cake\Http\Response|null|void
      */
-    public function beforeRender(Event $event)
+    public function beforeRender(EventInterface $event)
     {
         parent::beforeRender($event);
         $layout = Configure::read('App.Heartbeat.layout');
