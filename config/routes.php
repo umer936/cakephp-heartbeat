@@ -4,7 +4,7 @@ use Cake\Routing\Route\DashedRoute;
 
 $routes->plugin(
     'OrcaServices/Heartbeat',
-    ['path' => '/heartbeat'],
+    ['path' => '/healthcheck'],
     function ($routes) {
         $routes->setRouteClass(DashedRoute::class);
 
