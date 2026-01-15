@@ -6,6 +6,6 @@ use Cake\Core\BasePlugin;
 use Cake\Core\PluginApplicationInterface;
 use Cake\Routing\RouteBuilder;
 
-class Plugin extends BasePlugin
+class HeartbeatPlugin extends BasePlugin
 {
 }
