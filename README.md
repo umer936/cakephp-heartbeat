@@ -1,3 +1,5 @@
+# Original one now supports CakePHP 5.x. Use that instead: https://github.com/orca-services/cakephp-heartbeat.
+
 # Heartbeat
 
 A CakePHP plugin providing an application heartbeat status page with configurable sensors.
